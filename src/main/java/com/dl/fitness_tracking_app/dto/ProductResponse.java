@@ -7,7 +7,7 @@ public record ProductResponse (
         Double protein,
         Double carbs,
         Double fats,
-        Integer code,
-        String image
+        Integer code
+        //String image
 ){
 }

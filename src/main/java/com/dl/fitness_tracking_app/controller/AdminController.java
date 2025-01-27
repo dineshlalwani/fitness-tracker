@@ -1,6 +1,7 @@
 package com.dl.fitness_tracking_app.controller;
 
 import com.dl.fitness_tracking_app.dto.ProductRequest;
+import com.dl.fitness_tracking_app.dto.ProductResponse;
 import com.dl.fitness_tracking_app.dto.UserResponse;
 import com.dl.fitness_tracking_app.service.AdminService;
 import lombok.RequiredArgsConstructor;
@@ -24,5 +25,9 @@ public class AdminController {
     @PostMapping("/product")
     public ResponseEntity<?> addProduct(@RequestBody ProductRequest productRequest){
         return adminService.addProduct(productRequest);
+    }
+    @GetMapping("/product")
+    public List<ProductResponse> getAllProducts(){
+        return adminService.getProducts();
     }
 }

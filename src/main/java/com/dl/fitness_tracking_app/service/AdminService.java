@@ -1,6 +1,7 @@
 package com.dl.fitness_tracking_app.service;
 
 import com.dl.fitness_tracking_app.dto.ProductRequest;
+import com.dl.fitness_tracking_app.dto.ProductResponse;
 import com.dl.fitness_tracking_app.dto.UserResponse;
 import com.dl.fitness_tracking_app.entity.Product;
 import com.dl.fitness_tracking_app.repository.ProductRepository;
@@ -41,5 +42,10 @@ public class AdminService {
                 .build();
         productRepository.save(newProduct);
         return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
+    public List<ProductResponse> getProducts() {
+        var products = productRepository.findAll();
+        return convertor.productMapper(products);
     }
 }

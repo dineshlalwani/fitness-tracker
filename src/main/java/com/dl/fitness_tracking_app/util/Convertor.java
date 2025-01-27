@@ -76,8 +76,8 @@ public class Convertor {
                 product.getProtein(),
                 product.getCarbs(),
                 product.getFat(),
-                product.getCode(),
-                Base64.getEncoder().encodeToString(product.getImage())
+                product.getCode()
+                //Base64.getEncoder().encodeToString(product.getImage())
         );
     }
 
