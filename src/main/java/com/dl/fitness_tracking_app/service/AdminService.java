@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 @RequiredArgsConstructor
@@ -47,5 +48,12 @@ public class AdminService {
     public List<ProductResponse> getProducts() {
         var products = productRepository.findAll();
         return convertor.productMapper(products);
+    }
+
+    public ResponseEntity<?> deleteProduct(Integer code) {
+        var product = productRepository.findByCode(code)
+                .orElseThrow(()->new NoSuchElementException("Product does not exist"));
+        productRepository.delete(product);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

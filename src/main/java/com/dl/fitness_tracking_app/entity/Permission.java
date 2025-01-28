@@ -1,7 +1,9 @@
 package com.dl.fitness_tracking_app.entity;
 
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
+@RequiredArgsConstructor
 public enum Permission {
 
     ADMIN_READ("read"),
@@ -15,10 +17,6 @@ public enum Permission {
     USER_DELETE("delete");
 
     private final String permission;
-
-    Permission(String permission) {
-        this.permission = permission;
-    }
 
     public String getPermission() {
         return permission;

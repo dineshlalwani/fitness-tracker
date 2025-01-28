@@ -4,7 +4,6 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 
-import java.util.List;
 import java.util.Set;
 
 import static com.dl.fitness_tracking_app.entity.Permission.*;

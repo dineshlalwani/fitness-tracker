@@ -30,4 +30,8 @@ public class AdminController {
     public List<ProductResponse> getAllProducts(){
         return adminService.getProducts();
     }
+    @DeleteMapping("/product/{code}")
+    public ResponseEntity<?> deleteProduct(@PathVariable("code") Integer code){
+        return adminService.deleteProduct(code);
+    }
 }
