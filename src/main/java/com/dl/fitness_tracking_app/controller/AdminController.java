@@ -30,6 +30,7 @@ public class AdminController {
     public List<ProductResponse> getAllProducts(){
         return adminService.getProducts();
     }
+    //todo add image to product
     @DeleteMapping("/product/{code}")
     public ResponseEntity<?> deleteProduct(@PathVariable("code") Integer code){
         return adminService.deleteProduct(code);
