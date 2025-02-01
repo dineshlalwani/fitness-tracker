@@ -1,9 +1,6 @@
 package com.dl.fitness_tracking_app.util;
 
-import com.dl.fitness_tracking_app.dto.PerformanceMetricsResponse;
-import com.dl.fitness_tracking_app.dto.ProductResponse;
-import com.dl.fitness_tracking_app.dto.UserResponse;
-import com.dl.fitness_tracking_app.dto.WorkoutResponse;
+import com.dl.fitness_tracking_app.dto.*;
 import com.dl.fitness_tracking_app.entity.PerformanceMetrics;
 import com.dl.fitness_tracking_app.entity.Product;
 import com.dl.fitness_tracking_app.entity.User;
@@ -78,6 +75,14 @@ public class Convertor {
                 product.getFat(),
                 product.getCode()
                 //Base64.getEncoder().encodeToString(product.getImage())
+        );
+    }
+    public UserCredentials userCredentialsToDto(User user) {
+        return new UserCredentials(
+                user.getFirstname(),
+                user.getLastname(),
+                user.getEmail(),
+                user.getDateOfBirth()
         );
     }
 

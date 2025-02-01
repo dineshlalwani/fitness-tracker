@@ -5,10 +5,9 @@ import com.dl.fitness_tracking_app.dto.ProductResponse;
 import com.dl.fitness_tracking_app.dto.UserResponse;
 import com.dl.fitness_tracking_app.entity.Product;
 import com.dl.fitness_tracking_app.repository.ProductRepository;
-import com.dl.fitness_tracking_app.repository.UserRespository;
+import com.dl.fitness_tracking_app.repository.UserRepository;
 import com.dl.fitness_tracking_app.util.Convertor;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -20,10 +19,10 @@ import java.util.NoSuchElementException;
 @RequiredArgsConstructor
 public class AdminService {
     private final Convertor convertor;
-    private final UserRespository userRespository;
+    private final UserRepository userRepository;
     private final ProductRepository productRepository;
     public List<UserResponse> getAllUserInfo() {
-        var users = userRespository.findAll();
+        var users = userRepository.findAll();
         return convertor.userMapper(users);
     }
 

@@ -3,20 +3,20 @@ package com.dl.fitness_tracking_app.service;
 import com.dl.fitness_tracking_app.dto.RegisterRequest;
 import com.dl.fitness_tracking_app.entity.Role;
 import com.dl.fitness_tracking_app.entity.User;
-import com.dl.fitness_tracking_app.repository.UserRespository;
+import com.dl.fitness_tracking_app.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import java.util.Base64;
 
 @Service
 @RequiredArgsConstructor
 public class RegisterService {
-    private final UserRespository userRespository;
+    private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
     public ResponseEntity<?> registerUser(RegisterRequest registerRequest) {
-        if(userRespository.existsByEmail(registerRequest.email())){
+        if(userRepository.existsByEmail(registerRequest.email())){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
 
@@ -24,12 +24,12 @@ public class RegisterService {
                 .firstname(registerRequest.firstName())
                 .lastname(registerRequest.lastName())
                 .email(registerRequest.email())
-                .password(registerRequest.password()) //todo encode password using spring security
+                .password(passwordEncoder.encode(registerRequest.password())) //todo encode password using spring security
                 .dateOfBirth(registerRequest.dateOfBirth())
                 .role(Role.USER)
                 .build();
 
-        userRespository.save(user);
+        userRepository.save(user);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 }

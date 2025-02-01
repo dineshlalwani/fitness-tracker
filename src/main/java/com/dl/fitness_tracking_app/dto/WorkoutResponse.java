@@ -6,6 +6,6 @@ public record WorkoutResponse (
         String id,
         LocalDate workoutDate,
         String exerciseType,
-        PerformanceMetricsResponse performanceMetericsResponse) {
+        PerformanceMetricsResponse performanceMetricsResponse) {
 
 }
