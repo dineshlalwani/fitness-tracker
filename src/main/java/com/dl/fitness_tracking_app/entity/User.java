@@ -9,6 +9,7 @@ import org.springframework.data.mongodb.core.mapping.FieldType;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -30,8 +31,8 @@ public class User implements UserDetails {
     @Indexed(unique = true)
     private String email;
     private String password;
-    private List<Workout> workouts;
-    private List<Product> products;
+    private List<Workout> workouts = new ArrayList<>();
+    private List<Product> products = new ArrayList<>();
     @Field(targetType = FieldType.STRING)
     private Role role;
 

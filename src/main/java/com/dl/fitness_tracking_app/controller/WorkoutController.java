@@ -18,4 +18,8 @@ public class WorkoutController {
     public ResponseEntity<?> addWorkout(@RequestBody WorkoutResponse workoutResponse, Authentication authentication){
         return workoutService.addWorkout(authentication, workoutResponse);
     }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteWorkout(@PathVariable("id") String id) {
+        return workoutService.deleteWorkout(id);
+    }
 }
